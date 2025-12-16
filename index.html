@@ -1,13 +1,111 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tăng tương tác MXH</title>
+
+<style>
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+.card {
+    background: rgba(255,255,255,0.1);
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 0 30px rgba(0,255,255,0.3);
+}
+
+.card h2 {
+    margin-bottom: 10px;
+}
+
+.btn {
+    margin: 12px 0;
+    padding: 14px;
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.like {
+    background: #ff4d6d;
+    color: white;
+}
+
+.share {
+    background: #4dabf7;
+    color: white;
+}
+
+.follow {
+    background: #51cf66;
+    color: white;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+
+.count {
+    font-size: 14px;
+    margin-top: 5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>🔥 Tăng Tương Tác MXH</h2>
+    <p>Ủng hộ mình nha ❤️</p>
+
+    <button class="btn like" onclick="like()">
+        ❤️ Like
+    </button>
+    <div class="count" id="likeCount">0 lượt thích</div>
+
+    <button class="btn share" onclick="share()">
+        🔁 Chia sẻ
+    </button>
+
+    <button class="btn follow" onclick="follow()">
+        👤 Theo dõi
+    </button>
+
+    <p id="msg"></p>
+</div>
+
+<script>
+let likes = 0;
+
+function like() {
+    likes++;
+    document.getElementById("likeCount").innerText = likes + " lượt thích";
+}
+
+function share() {
+    navigator.clipboard.writeText(window.location.href);
+    document.getElementById("msg").innerText = "🔗 Đã copy link chia sẻ!";
+}
+
+function follow() {
+    document.getElementById("msg").innerText = "✅ Cảm ơn bạn đã theo dõi!";
+}
+</script>
+
+</body>
 </html>
